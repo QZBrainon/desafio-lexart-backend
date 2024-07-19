@@ -23,3 +23,5 @@ app.get("/coffee", (_req: Request, res: Response) => res.status(418).end());
 app.listen(port);
 
 console.log(`[SERVER]: Listening on port ${port}`);
+
+module.exports = app;
