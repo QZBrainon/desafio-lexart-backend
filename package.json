@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "prestart": "npx sequelize-cli db:create && npx sequelize-cli db:migrate",
     "start": "node ./dist/app.js",
     "dev": "ts-node-dev ./src/app.ts",
     "build": "npx tsc",

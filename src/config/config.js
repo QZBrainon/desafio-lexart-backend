@@ -1,9 +1,17 @@
+const dotenv = require("dotenv").config();
+
 const config = {
   username: process.env.POSTGRES_USER,
   password: process.env.POSTGRES_PASSWORD,
   database: process.env.POSTGRES_DATABASE,
   host: process.env.POSTGRES_HOST,
   dialect: process.env.SEQUELIZE_DIALECT,
+  ssl: true,
+  dialectOptions: {
+    ssl: {
+      rejectUnauthorized: false,
+    },
+  },
 };
 
 module.exports = {
