@@ -16,7 +16,9 @@ const getUserById = async (req, res) => {
     const userId = req.params.id;
     const user = await userService.getUserById(userId);
 
-    if (!user) throwHttpError("User not found", 404);
+    if (!user) {
+      throwHttpError("User not found", 404);
+    }
 
     return res.status(200).json({ user });
   } catch (error) {
