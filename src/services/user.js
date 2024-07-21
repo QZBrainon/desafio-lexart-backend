@@ -5,8 +5,8 @@ const createUser = async (userPayload) => {
   return user;
 };
 
-const getUserById = async (userPayload) => {
-  const user = await User.findOne({ where: { id: userPayload.id } });
+const getUserById = async (userId) => {
+  const user = await User.findOne({ where: { id: userId } });
   return user;
 };
 
@@ -16,10 +16,10 @@ const getAllUsers = async () => {
 };
 
 const updateUser = async (userId, updatedUserData) => {
-  const updatedUser = await User.update(updateUserData, {
+  const user = await User.update(updateUserData, {
     where: { id: userId },
   });
-  return updateUser;
+  return user;
 };
 
 const deleteUser = async (userId) => {
