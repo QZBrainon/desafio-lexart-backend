@@ -1,6 +1,6 @@
-const dotenv = require("dotenv").config();
+require("dotenv").config();
 
-const config = {
+const sequelizeConfig = {
   username: process.env.POSTGRES_USER,
   password: process.env.POSTGRES_PASSWORD,
   database: process.env.POSTGRES_DATABASE,
@@ -15,7 +15,7 @@ const config = {
 };
 
 module.exports = {
-  development: config,
-  test: config,
-  production: config,
+  development: sequelizeConfig,
+  test: sequelizeConfig,
+  production: sequelizeConfig,
 };
