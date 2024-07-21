@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/auth", authRouter);
-app.use("/users", authRouter);
+app.use("/users", userRouter);
 
 app.get("/", (_req, res) => res.status(200).send("Hello World"));
 
