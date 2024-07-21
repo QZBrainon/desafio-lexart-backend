@@ -5,7 +5,7 @@ const config = {
   password: process.env.POSTGRES_PASSWORD,
   database: process.env.POSTGRES_DATABASE,
   host: process.env.POSTGRES_HOST,
-  dialect: process.env.SEQUELIZE_DIALECT,
+  dialect: "postgres",
   ssl: true,
   dialectOptions: {
     ssl: {
