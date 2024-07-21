@@ -40,6 +40,9 @@ const updateUser = async (req, res) => {
     const userId = req.params.id;
     const updatedUserData = req.body;
     const updatedUser = await userService.updateUser(userId, updatedUserData);
+    if (!updatedUser) {
+      throwHttpError("Could Not Update", 400);
+    }
     return res.status(200).json({ user: updatedUser });
   } catch (error) {
     throwHttpError(error.message, 500);
