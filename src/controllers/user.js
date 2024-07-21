@@ -7,6 +7,8 @@ const createUser = async (req, res, next) => {
 
     return res.status(201).json({ user });
   } catch (error) {
+    error.status = 409;
+    error.message = "Email already taken";
     next(error);
   }
 };
