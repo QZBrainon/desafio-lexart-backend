@@ -1,23 +1,25 @@
-import { Request, Response } from "express";
-
 const dotenv = require("dotenv");
 dotenv.config();
 const express = require("express");
 const cors = require("cors");
 const port = process.env.API_PORT || 3001;
-const authRouter = require("../src/routes/auth");
+const authRouter = require("./routes/auth");
+const userRouter = require("./routes/users");
+const errorHandler = require("./middlewares/errorHandler");
+
 const app = express();
 
 app.use(express.json());
 app.use(cors());
 
 app.use("/auth", authRouter);
+app.use("/users", authRouter);
 
-app.get("/", (_req: Request, res: Response) =>
-  res.status(200).send("Hello World")
-);
+app.get("/", (_req, res) => res.status(200).send("Hello World"));
 
-app.get("/coffee", (_req: Request, res: Response) => res.status(418).end());
+app.get("/coffee", (_req, res) => res.status(418).end());
+
+app.use(errorHandler);
 
 app.listen(port);
 
