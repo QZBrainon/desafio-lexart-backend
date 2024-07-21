@@ -8,7 +8,9 @@
     "start": "node ./dist/app.js",
     "dev": "nodemon ./src/app.js",
     "vercel-build": "echo build complete",
-    "db:drop": "npx sequelize-cli db:drop"
+    "db:drop": "npx sequelize-cli db:migrate:undo:all && npx sequelize-cli db:drop",
+    "db:migrate": "npx sequelize-cli db:migrate",
+    "db:help":"npx sequelize-cli --help"
   },
   "keywords": [],
   "author": "",

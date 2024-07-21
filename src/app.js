@@ -5,7 +5,9 @@ const cors = require("cors");
 const port = process.env.API_PORT || 3001;
 const authRouter = require("./routes/auth");
 const userRouter = require("./routes/users");
-const errorHandler = require("./middlewares/errorHandler");
+const productRouter = require("./routes/products");
+const errorHandler = require("./middlewares/error.middleware");
+const jwtValidate = require("./middlewares/jwt-validate.middleware");
 
 const app = express();
 
@@ -13,7 +15,8 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/auth", authRouter);
-app.use("/users", userRouter);
+app.use("/users", jwtValidate, userRouter);
+app.use("/products", productRouter);
 
 app.get("/", (_req, res) => res.status(200).send("Hello World"));
 

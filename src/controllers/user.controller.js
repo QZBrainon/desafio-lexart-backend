@@ -13,7 +13,7 @@ const createUser = async (req, res) => {
     const token = await userService.createUser(userPayload);
     return res.status(201).json({ token });
   } catch (error) {
-    throwHttpError("User already exists", 409);
+    throwHttpError("User creation failed", 409);
   }
 };
 
@@ -50,7 +50,7 @@ const deleteUser = async (req, res) => {
 
     return res.status(204).end();
   } catch (error) {
-    throwHttpError(error.message, 500);
+    throwHttpError("Failed to delete user", 500);
   }
 };
 
