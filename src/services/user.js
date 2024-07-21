@@ -1,12 +1,8 @@
 const { User } = require("../models");
 
 const createUser = async (userPayload) => {
-  try {
-    const user = await User.create(userPayload);
-    return user;
-  } catch (error) {
-    throw new Error("Email already taken");
-  }
+  const user = await User.create(userPayload);
+  return user;
 };
 
 module.exports = { createUser };
