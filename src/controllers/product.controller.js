@@ -3,7 +3,7 @@ const throwHttpError = require("../utils/throwHttpError.js");
 
 const createProduct = async (req, res) => {
   try {
-    const productPayload = req.body;
+    const productPayload = req.normalizedPayload;
     const product = await productService.createProduct(productPayload);
     return res.status(201).json({ product });
   } catch (error) {
@@ -29,7 +29,7 @@ const getAllProducts = async (_req, res) => {
 
 const updateProduct = async (req, res) => {
   const productId = req.params.id;
-  const updatedProductData = req.body;
+  const updatedProductData = req.normalizedPayload;
   const updatedProduct = await productService.updateProduct(
     productId,
     updatedProductData

@@ -1,6 +1,10 @@
 const { Product } = require("../models");
 
 const createProduct = async (productPayload) => {
+  if (Array.isArray(productPayload)) {
+    const products = await Product.bulkCreate(productPayload);
+    return products;
+  }
   const product = await Product.create(productPayload);
   return product;
 };
