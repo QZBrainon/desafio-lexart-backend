@@ -16,7 +16,7 @@ const getAllUsers = async () => {
 };
 
 const updateUser = async (userId, updatedUserData) => {
-  const user = await User.update(updateUserData, {
+  const user = await User.update(updatedUserData, {
     where: { id: userId },
   });
   return user;
