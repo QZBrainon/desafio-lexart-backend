@@ -1,22 +1,38 @@
 const userService = require("../services/user.js");
+const throwHttpError = require("../utils/throwHttpError.js");
 
 const createUser = async (req, res, next) => {
-  try {
-    const userPayload = req.body;
-    const user = await userService.createUser(userPayload);
+  const userPayload = req.body;
+  const user = await userService.createUser(userPayload);
+  console.log(user);
+  return res.status(201).json({ user });
+};
 
-    return res.status(201).json({ user });
+const getUserById = async (req, res, next) => {
+  try {
+    const userId = req.params.id;
+    const user = await userService.getUserById(userId);
+
+    if (!user) {
+      const error = new Error("User not found");
+      error.status = 404;
+      throw error;
+    }
+
+    return res.status(200).json({ user });
   } catch (error) {
-    error.status = 409;
-    error.message = "Email already taken";
     next(error);
   }
 };
 
-// const getAllUsers = async (_req, res) => {
-//   const allUsers = await userService.getAllUsers();
-//   return res.status(200).json(allUsers);
-// };
+const getAllUsers = async (_req, res, next) => {
+  try {
+    const allUsers = await userService.getAllUsers();
+    return res.status(200).json(allUsers);
+  } catch (error) {
+    next(error);
+  }
+};
 
 // const getUserById = async (req, res) => {
 //   const { id } = req.params;

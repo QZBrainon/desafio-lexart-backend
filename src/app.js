@@ -1,5 +1,5 @@
-const dotenv = require("dotenv");
-dotenv.config();
+require("dotenv").config();
+require("express-async-errors");
 const express = require("express");
 const cors = require("cors");
 const port = process.env.API_PORT || 3001;
