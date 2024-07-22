@@ -13,7 +13,7 @@ const productHandler = require("./middlewares/product-handler.middleware");
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({ origin: ["https://desafio-lexart-backend.vercel.app/"] }));
 
 app.use("/auth", authRouter);
 app.use("/users", jwtValidate, userRouter);
