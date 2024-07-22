@@ -10,10 +10,17 @@ const errorHandler = require("./middlewares/error-handler.middleware");
 const jwtValidate = require("./middlewares/jwt-validate.middleware");
 const productHandler = require("./middlewares/product-handler.middleware");
 
+const corsOptions = {
+  origin: "https://desafio-lexart-frontend.vercel.app",
+  methods: ["GET", "POST", "PATCH", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+};
+
 const app = express();
 
 app.use(express.json());
-app.use(cors({ origin: ["https://desafio-lexart-backend.vercel.app/"] }));
+app.use(cors(corsOptions));
 
 app.use("/auth", authRouter);
 app.use("/users", jwtValidate, userRouter);
