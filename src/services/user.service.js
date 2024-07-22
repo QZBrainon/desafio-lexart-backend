@@ -5,7 +5,7 @@ const throwHttpError = require("../utils/throwHttpError.js");
 
 const login = async (email, password) => {
   const user = await User.findOne({ where: { email } });
-  console.log(user);
+  console.log(user.password === password);
   if (!user) {
     throwHttpError("Invalid email or password", 404);
   }

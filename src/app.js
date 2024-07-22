@@ -11,10 +11,7 @@ const jwtValidate = require("./middlewares/jwt-validate.middleware");
 const productHandler = require("./middlewares/product-handler.middleware");
 
 const corsOptions = {
-  origin: [
-    "https://desafio-lexart-frontend.vercel.app",
-    "https://desafio-lexart-frontend-git-main-qzbrainons-projects.vercel.app",
-  ],
+  origin: "*",
   methods: ["GET", "POST", "PATCH", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
