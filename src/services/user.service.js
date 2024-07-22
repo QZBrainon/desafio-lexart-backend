@@ -5,8 +5,13 @@ const throwHttpError = require("../utils/throwHttpError.js");
 
 const login = async (email, password) => {
   const user = await User.findOne({ where: { email } });
-  if (!user) throwHttpError("Invalid email or password", 404);
-  if (user.password !== password) throwHttpError("Unauthorized", 401);
+  console.log(user);
+  if (!user) {
+    throwHttpError("Invalid email or password", 404);
+  }
+  if (user.password !== password) {
+    throwHttpError("Unauthorized", 401);
+  }
 
   const token = generateToken(user.id);
   return token;
