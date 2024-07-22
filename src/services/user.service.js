@@ -1,3 +1,4 @@
+require("dotenv").config();
 const { User } = require("../models");
 const generateToken = require("../utils/generateToken.js");
 const throwHttpError = require("../utils/throwHttpError.js");
