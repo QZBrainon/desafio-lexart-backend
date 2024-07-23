@@ -5,7 +5,7 @@ const createProduct = async (req, res) => {
   try {
     const productPayload = req.normalizedPayload;
     const product = await productService.createProduct(productPayload);
-    return res.status(201).json({ product });
+    return res.status(201).json(product);
   } catch (error) {
     throwHttpError("Product creation failed", 500);
   }
