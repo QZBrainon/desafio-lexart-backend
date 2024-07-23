@@ -19,7 +19,7 @@ const getProductById = async (req, res) => {
     throwHttpError("Product not found", 404);
   }
 
-  return res.status(200).json({ product });
+  return res.status(200).json(product);
 };
 
 const getAllProducts = async (_req, res) => {
